@@ -1,14 +1,14 @@
-using EmployeeSpy.DataAccessEF;
-using EmployeeSpy.Models;
 using EmployeeSpy.Abstractions;
+using EmployeeSpy.Configurations;
+using EmployeeSpy.DataAccessEF;
 using EmployeeSpy.Extensions;
+using EmployeeSpy.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using System.IO;
 using Microsoft.Extensions.Logging;
 
 namespace EmployeeSpy
@@ -35,15 +35,15 @@ namespace EmployeeSpy
             services.AddScoped<IRepository<Visitor>, RepositoryBase<Visitor>>();
             services.AddScoped<IRepository<Employee>, RepositoryBase<Employee>>();
 
+            services.AddAuthentication("Bearer")
+                .AddIdentityServerAuthentication("Bearer", options =>
+                {
+                    options.ApiName = config.Identity.ApiName;
+                    options.RequireHttpsMetadata = config.Identity.RequireHttpsMetadata;
+                    options.Authority = config.Identity.Authority;
+                });
+
             services.AddControllers();
-        }
-
-        private EmployeeSpyConfig GetConfig()
-        {
-            var config = new EmployeeSpyConfig();
-            Configuration.GetSection("EmployeeSpy").Bind(config);
-
-            return config;
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, EmployeeSpyContext context, ILoggerFactory loggerFactory)
@@ -56,6 +56,8 @@ namespace EmployeeSpy
             DbInitializer.Initialize(context);
 
             app.UseRouting();
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseLoggingMiddleware(loggerFactory);
@@ -65,6 +67,14 @@ namespace EmployeeSpy
             {
                 endpoints.MapControllers();
             });
+        }
+
+        private EmployeeSpyConfig GetConfig()
+        {
+            var config = new EmployeeSpyConfig();
+            Configuration.GetSection("EmployeeSpy").Bind(config);
+
+            return config;
         }
     }
 }

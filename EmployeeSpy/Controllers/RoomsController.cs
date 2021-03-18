@@ -1,5 +1,6 @@
 ﻿using EmployeeSpy.Abstractions;
 using EmployeeSpy.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -7,6 +8,7 @@ namespace EmployeeSpy.Controllers
 {
     [Route("api/Rooms")]
     [ApiController]
+    [Authorize]
     public class RoomsController : ControllerBase
     {
         private IRepository<Room> _repo;
