@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using EmployeeSpy.Services;
+using EmployeeSpy.DataAccessEF.Repositories;
 
 namespace EmployeeSpy
 {
@@ -31,13 +32,13 @@ namespace EmployeeSpy
               options
                   .UseSqlServer(config.EmployeeSpyDatabase));
 
-            services.AddScoped<IRepository<Room>, RepositoryBase<Room>>();
+            services.AddScoped<IRoomsRepository, RoomsRepository>();
             services.AddScoped<IRepository<Door>, RepositoryBase<Door>>();
             services.AddScoped<IRepository<Visitor>, RepositoryBase<Visitor>>();
             services.AddScoped<IRepository<Employee>, RepositoryBase<Employee>>();
+            services.AddScoped<IRepository<MovementLogRecord>, RepositoryBase<MovementLogRecord>>();
 
             services.AddScoped<IGateKeeperService, GateKeeperService>();
-
 
             services.AddAuthentication("Bearer")
                 .AddIdentityServerAuthentication("Bearer", options =>

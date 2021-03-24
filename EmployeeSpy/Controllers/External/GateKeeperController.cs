@@ -23,10 +23,5 @@ namespace EmployeeSpy.Controllers
                 ? _gateKeeperService.VerifyVisitorPassAttempt(model.PersonId, model.GateKeeperId)
                 : _gateKeeperService.VerifyEmployeePassAttempt(model.PersonId, model.GateKeeperId);
         }
-
-        public async Task<object> Get()
-        {
-            return Ok();
-        }
     }
 }
