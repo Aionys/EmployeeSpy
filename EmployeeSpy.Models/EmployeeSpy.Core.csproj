@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\IRoomsRepository.cs" />
     <Compile Include="Abstractions\IGateKeeperService.cs" />
     <Compile Include="Abstractions\IRepository.cs" />
     <Compile Include="Models\Room.cs" />

@@ -17,14 +17,11 @@ namespace EmployeeSpy.Controllers
         }
 
         [HttpPost("")]
-        public async Task<object> Post([FromBody] PassAttemptDto model)
+        public bool Post([FromBody] PassAttemptDto model)
         {
-            if (model == null)
-            {
-                return BadRequest();
-            }
-
-            return await _gateKeeperService.VerifyPassAttempt(model.PersonId, model.GateKeeperId);
+            return (model.PersonType == PersonType.Visitor)
+                ? _gateKeeperService.VerifyVisitorPassAttempt(model.PersonId, model.GateKeeperId)
+                : _gateKeeperService.VerifyEmployeePassAttempt(model.PersonId, model.GateKeeperId);
         }
 
         public async Task<object> Get()
