@@ -1,5 +1,6 @@
 ﻿using EmployeeSpy.Abstractions;
 using EmployeeSpy.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 
@@ -7,6 +8,7 @@ namespace EmployeeSpy.Controllers
 {
     [Route("api/visitors")]
     [ApiController]
+    [Authorize]
     public class VisitorsController : ControllerBase
     {
         private IRepository<Visitor> _repo;
