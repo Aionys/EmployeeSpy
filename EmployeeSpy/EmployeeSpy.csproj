@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\EmployeeSpy.DataAccessEF\EmployeeSpy.DataAccessEF.csproj" />
+    <ProjectReference Include="..\EmployeeSpy.Services\EmployeeSpy.Services.csproj" />
   </ItemGroup>
 
 

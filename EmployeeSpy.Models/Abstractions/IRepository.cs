@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using EmployeeSpy.Models;
 
-namespace EmployeeSpy.Abstractions
+namespace EmployeeSpy.Core.Abstractions
 {
     public interface IRepository<TEntity> where TEntity : BaseEntity
     {

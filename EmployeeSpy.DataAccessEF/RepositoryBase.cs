@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using EmployeeSpy.Models;
-using EmployeeSpy.Abstractions;
+using EmployeeSpy.Core.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeSpy.DataAccessEF
