@@ -35,7 +35,8 @@ namespace EmployeeSpy.Services
             var room = _roomsRepo.GetByControlId(gateKeeperId);
 
             LogMovement(visitor, room.Entrance);
-            return room.AccessLevel == AccessLevelType.Anyone;
+            return room.AccessLevel == AccessLevelType.Anyone ||
+                 (room.AccessLevel == AccessLevelType.StaffOnly && GetMoveDirection(room.Entrance) == MoveDirection.Exit);
         }
 
         public bool VerifyEmployeePassAttempt(int personId, int gateKeeperId)
@@ -71,10 +72,15 @@ namespace EmployeeSpy.Services
                 MoveTime = DateTime.UtcNow,
                 PassedDoor = door,
                 Person = person,
-                MoveDirection = door.EntranceControl != null ? MoveDirection.Enter : MoveDirection.Exit
+                MoveDirection = GetMoveDirection(door)
             };
 
             _movementsRepo.Add(r);
+        }
+
+        private MoveDirection GetMoveDirection(Door door)
+        {
+            return door.EntranceControl != null ? MoveDirection.Enter : MoveDirection.Exit;
         }
     }
 }

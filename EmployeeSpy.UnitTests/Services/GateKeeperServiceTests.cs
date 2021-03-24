@@ -152,7 +152,7 @@ namespace EmployeeSpy.UnitTests
             _movementsRepo.Verify(m => m.Add(It.Is<MovementLogRecord>(r =>
                     r.Person.Id == employee.Id &&
                     r.PassedDoor.Id == room.Entrance.Id &&
-                    r.MoveDirection == MoveDirection.Enter)));
+                    r.MoveDirection == MoveDirection.Exit)));
         }
 
         [Theory]
