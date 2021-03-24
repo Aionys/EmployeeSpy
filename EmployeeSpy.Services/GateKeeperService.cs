@@ -23,14 +23,58 @@ namespace EmployeeSpy.Services
             _movementsRepo = movementsRepo;
         }
 
-        public bool VerifyVisitorPassAttempt(int personId,  int gateKeeperId)
+        public bool VerifyVisitorPassAttempt(int personId, int gateKeeperId)
         {
-            return false;
+            var visitor = _visitorRepo.GetById(personId);
+
+            if (visitor == null)
+            {
+                return false;
+            }
+
+            var room = _roomsRepo.GetByControlId(gateKeeperId);
+
+            LogMovement(visitor, room.Entrance);
+            return room.AccessLevel == AccessLevelType.Anyone;
         }
 
         public bool VerifyEmployeePassAttempt(int personId, int gateKeeperId)
         {
-            return false;
+            var employee = _employeeRepo.GetById(personId);
+
+            if (employee == null)
+            {
+                return false;
+            }
+
+            var room = _roomsRepo.GetByControlId(gateKeeperId);
+            LogMovement(employee, room.Entrance);
+
+            switch (room.AccessLevel)
+            {
+                case AccessLevelType.Anyone:
+                case AccessLevelType.StaffOnly:
+                    return true;
+
+                case AccessLevelType.HighSecurity:
+                    return employee.WorkPlace.Id == room.Id;
+
+                default:
+                    return false;
+            }
+        }
+
+        private void LogMovement(Person person, Door door)
+        {
+            var r = new MovementLogRecord()
+            {
+                MoveTime = DateTime.UtcNow,
+                PassedDoor = door,
+                Person = person,
+                MoveDirection = door.EntranceControl != null ? MoveDirection.Enter : MoveDirection.Exit
+            };
+
+            _movementsRepo.Add(r);
         }
     }
 }
