@@ -1,6 +1,6 @@
-﻿using EmployeeSpy.Core.Abstractions;
+﻿using System;
+using EmployeeSpy.Core.Abstractions;
 using EmployeeSpy.Models;
-using System;
 
 namespace EmployeeSpy.Services
 {
@@ -72,7 +72,7 @@ namespace EmployeeSpy.Services
                 MoveTime = DateTime.UtcNow,
                 PassedDoor = door,
                 Person = person,
-                MoveDirection = GetMoveDirection(door)
+                MoveDirection = GetMoveDirection(door),
             };
 
             _movementsRepo.Add(r);

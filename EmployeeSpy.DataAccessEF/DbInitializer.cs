@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
 using EmployeeSpy.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeSpy.DataAccessEF
 {
@@ -10,7 +9,7 @@ namespace EmployeeSpy.DataAccessEF
         public static void Initialize(EmployeeSpyContext context)
         {
             context.Database.Migrate();
-           
+
             if (context.Employees.Count() > 0)
             {
                 return;
@@ -21,40 +20,40 @@ namespace EmployeeSpy.DataAccessEF
 
         private static void PopulateData(EmployeeSpyContext context)
         {
-            var Room = new Room()
+            var room = new Room()
             {
                 Name = "Reception",
                 Entrance = new Door()
                 {
                     KeepOpenSeconds = 10,
                     EntranceControl = new GateKeeper() { SerialNo = "fff45a" },
-                    ExitControl = new GateKeeper() { SerialNo = "dff44b" }
-                }
+                    ExitControl = new GateKeeper() { SerialNo = "dff44b" },
+                },
             };
 
-            var Room2 = new Room()
+            var room2 = new Room()
             {
                 Name = "hr department",
                 Entrance = new Door()
                 {
                     KeepOpenSeconds = 10,
                     EntranceControl = new GateKeeper() { SerialNo = "fff44a" },
-                    ExitControl = new GateKeeper() { SerialNo = "dff43b" }
-                }
+                    ExitControl = new GateKeeper() { SerialNo = "dff43b" },
+                },
             };
 
-            context.Doors.Add(Room.Entrance);
-            context.Rooms.Add(Room);
-            context.Doors.Add(Room2.Entrance);
-            context.Rooms.Add(Room2);
+            context.Doors.Add(room.Entrance);
+            context.Rooms.Add(room);
+            context.Doors.Add(room2.Entrance);
+            context.Rooms.Add(room2);
 
-            Room.InternalDoors.Add(Room2.Entrance);
+            room.InternalDoors.Add(room2.Entrance);
 
             var hr = new Employee()
             {
                 FirstName = "Jennifer",
                 LastName = "Lopez",
-                WorkPlace = Room2
+                WorkPlace = room2,
             };
 
             context.Employees.Add(hr);

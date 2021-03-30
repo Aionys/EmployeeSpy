@@ -1,5 +1,5 @@
-﻿using IdentityServer4.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using IdentityServer4.Models;
 
 namespace EmployeeSpy.IdentityServer.MockData
 {
@@ -14,10 +14,10 @@ namespace EmployeeSpy.IdentityServer.MockData
                     ClientId = "oauthClient",
                     ClientName = "Example client application using client credentials",
                     AllowedGrantTypes = GrantTypes.ResourceOwnerPassword,
-                    ClientSecrets = new List<Secret> {new Secret("SuperSecretPassword".Sha256())}, // change me!
-                    AllowedScopes = new List<string> {"api1.read"},
+                    ClientSecrets = new List<Secret> { new Secret("SuperSecretPassword".Sha256()) }, // change me!
+                    AllowedScopes = new List<string> { "api1.read" },
                     RequireClientSecret = false,
-                }
+                },
             };
         }
     }

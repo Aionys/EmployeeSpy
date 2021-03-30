@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using EmployeeSpy.Models;
 using EmployeeSpy.Core.Abstractions;
+using EmployeeSpy.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeSpy.DataAccessEF
 {
-    public class RepositoryBase<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
+    public class RepositoryBase<TEntity>
+        : IRepository<TEntity>
+        where TEntity : BaseEntity
     {
         protected readonly EmployeeSpyContext _context;
 
@@ -18,7 +20,7 @@ namespace EmployeeSpy.DataAccessEF
 
         protected IQueryable<TEntity> RepositoryQuery => _context.Set<TEntity>().AsQueryable();
 
-        public TEntity GetById (int Id)
+        public TEntity GetById(int Id)
         {
             return RepositoryQuery.FirstOrDefault(e => e.Id == Id);
         }
@@ -41,7 +43,7 @@ namespace EmployeeSpy.DataAccessEF
             {
                 _context.SaveChangesAsync();
             }
-            catch (DbUpdateException ex)
+            catch (DbUpdateException)
             {
                 RejectChanges();
                 throw;
@@ -97,7 +99,7 @@ namespace EmployeeSpy.DataAccessEF
             _context.Set<TEntity>().Remove(entity);
         }
 
-        public  void Save(TEntity entity)
+        public void Save(TEntity entity)
         {
             if (entity == null)
             {

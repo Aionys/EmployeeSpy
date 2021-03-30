@@ -1,5 +1,7 @@
 ﻿using EmployeeSpy.Controllers;
 using EmployeeSpy.Core.Abstractions;
+using EmployeeSpy.Dto;
+using EmployeeSpy.Dto.Enumerations;
 using Moq;
 using Xunit;
 
@@ -23,7 +25,7 @@ namespace EmployeeSpy.UnitTests.Controllers
             {
                 GateKeeperId = 3,
                 PersonId = 5,
-                PersonType = Dto.PersonType.Visitor
+                PersonType = PersonType.Visitor,
             };
 
             _gkeeperService.Setup(s => s.VerifyVisitorPassAttempt(dto.PersonId, dto.GateKeeperId)).Returns(expectedResult);
@@ -44,11 +46,11 @@ namespace EmployeeSpy.UnitTests.Controllers
         {
             // Arrange
             var expectedResult = true;
-            var dto = new Dto.PassAttemptDto()
+            var dto = new PassAttemptDto()
             {
                 GateKeeperId = 3,
                 PersonId = 5,
-                PersonType = Dto.PersonType.Employee
+                PersonType = PersonType.Employee,
             };
 
             _gkeeperService.Setup(s => s.VerifyEmployeePassAttempt(dto.PersonId, dto.GateKeeperId)).Returns(expectedResult);
@@ -63,6 +65,5 @@ namespace EmployeeSpy.UnitTests.Controllers
                 It.Is<int>(i => i == dto.PersonId),
                 It.Is<int>(i => i == dto.GateKeeperId)));
         }
-
     }
 }

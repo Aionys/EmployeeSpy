@@ -77,7 +77,7 @@ namespace EmployeeSpy.UnitTests
 
             // Accert
             Assert.Equal(isAllowed, result);
-            
+
             _visitorsRepo.Verify(m => m.GetById(_personId));
             _roomsRepo.Verify(m => m.GetByControlId(_controlId));
 
@@ -167,7 +167,6 @@ namespace EmployeeSpy.UnitTests
 
             _roomsRepo.Setup(r => r.GetByControlId(_controlId)).Returns(room);
             _employeesRepo.Setup(r => r.GetById(_personId)).Returns(employee);
-            
 
             // Act
             var target = new GateKeeperService(
@@ -208,8 +207,8 @@ namespace EmployeeSpy.UnitTests
                         ? new GateKeeper() { Id = _controlId, SerialNo = "tt55" }
                         : null,
 
-                    KeepOpenSeconds = 5
-                }
+                    KeepOpenSeconds = 5,
+                },
             };
         }
 
@@ -220,7 +219,7 @@ namespace EmployeeSpy.UnitTests
                 Id = _personId,
                 FirstName = "Mary",
                 LastName = "Smith",
-                WorkPlace = new Room() { Id = 5, AccessLevel = AccessLevelType.HighSecurity, Name = "work place1" }
+                WorkPlace = new Room() { Id = 5, AccessLevel = AccessLevelType.HighSecurity, Name = "work place1" },
             };
         }
     }

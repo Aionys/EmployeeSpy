@@ -1,7 +1,7 @@
 ﻿using EmployeeSpy.Core.Abstractions;
 using EmployeeSpy.Dto;
+using EmployeeSpy.Dto.Enumerations;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace EmployeeSpy.Controllers
 {

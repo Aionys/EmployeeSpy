@@ -8,7 +8,6 @@ namespace EmployeeSpy.DataAccess.Configurations
     {
         public void Configure(EntityTypeBuilder<Visitor> builder)
         {
-
         }
     }
 }

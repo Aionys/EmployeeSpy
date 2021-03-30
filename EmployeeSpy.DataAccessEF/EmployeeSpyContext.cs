@@ -1,6 +1,6 @@
-﻿using EmployeeSpy.Models;
+﻿using System.Reflection;
+using EmployeeSpy.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
 
 namespace EmployeeSpy.DataAccessEF
 {
@@ -12,7 +12,7 @@ namespace EmployeeSpy.DataAccessEF
         }
 
         public DbSet<Room> Rooms { get; set; }
-    
+
         public DbSet<Door> Doors { get; set; }
 
         public DbSet<GateKeeper> GateKeepers { get; set; }

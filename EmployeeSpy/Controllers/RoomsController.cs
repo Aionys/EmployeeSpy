@@ -39,8 +39,8 @@ namespace EmployeeSpy.Controllers
         [HttpPut("{id}")]
         public void Put(int id, [FromBody] Room value)
         {
-            var Room = _repo.GetById(id);
-            Room.Name = value.Name;
+            var room = _repo.GetById(id);
+            room.Name = value.Name;
         }
 
         [HttpDelete("{id}")]

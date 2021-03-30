@@ -30,7 +30,6 @@ namespace EmployeeSpy.IdentityServer
             app.UseRouting();
             app.UseIdentityServer();
 
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapGet("/", async context =>

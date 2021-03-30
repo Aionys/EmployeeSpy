@@ -8,7 +8,6 @@ namespace EmployeeSpy.IntegrationTests
         [Fact]
         public void Test1()
         {
-
         }
     }
 }

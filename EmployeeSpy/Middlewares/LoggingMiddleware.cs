@@ -1,10 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
+﻿using System.Diagnostics;
 using System.Threading.Tasks;
 using EmployeeSpy.Extensions;
-using System.IO;
-using System.Text;
-using System.Diagnostics;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeSpy.Middlewares
 {
@@ -38,7 +36,7 @@ namespace EmployeeSpy.Middlewares
             logRecord.Path = context.Request.Path;
             logRecord.HttpMethod = context.Request.Method;
             logRecord.RequestBody = await context.GetRequestBodyStringAsync();
-            
+
             var timer = new Stopwatch();
             timer.Start();
 
@@ -48,7 +46,7 @@ namespace EmployeeSpy.Middlewares
 
             logRecord.ResponseStatusCode = context.Response.StatusCode;
             logRecord.ExecutionMilliseconds = timer.ElapsedMilliseconds;
-            _logger.Log(LogLevel.Information, $"requestInfo: { logRecord.ToJson() }");
+            _logger.Log(LogLevel.Information, $"requestInfo: {logRecord.ToJson()}");
         }
     }
 }

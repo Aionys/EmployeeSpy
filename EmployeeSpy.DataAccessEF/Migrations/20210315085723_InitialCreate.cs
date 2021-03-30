@@ -14,7 +14,7 @@ namespace EmployeeSpy.DataAccessEF.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    AccessLevel = table.Column<int>(type: "int", nullable: false, defaultValue: 0)
+                    AccessLevel = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                 },
                 constraints: table =>
                 {
@@ -30,7 +30,7 @@ namespace EmployeeSpy.DataAccessEF.Migrations
                     FirstName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     Discriminator = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    WorkPlaceId = table.Column<int>(type: "int", nullable: true)
+                    WorkPlaceId = table.Column<int>(type: "int", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -52,7 +52,7 @@ namespace EmployeeSpy.DataAccessEF.Migrations
                     KeepOpenSeconds = table.Column<int>(type: "int", nullable: false, defaultValue: 10),
                     GuardId = table.Column<int>(type: "int", nullable: true),
                     EntranceControlId = table.Column<int>(type: "int", nullable: true),
-                    ExitControlId = table.Column<int>(type: "int", nullable: true)
+                    ExitControlId = table.Column<int>(type: "int", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -71,7 +71,7 @@ namespace EmployeeSpy.DataAccessEF.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    DoorId = table.Column<int>(type: "int", nullable: true)
+                    DoorId = table.Column<int>(type: "int", nullable: true),
                 },
                 constraints: table =>
                 {
@@ -93,7 +93,7 @@ namespace EmployeeSpy.DataAccessEF.Migrations
                     PersonId = table.Column<int>(type: "int", nullable: true),
                     PassedDoorId = table.Column<int>(type: "int", nullable: true),
                     MoveDirection = table.Column<int>(type: "int", nullable: false),
-                    MoveTime = table.Column<DateTime>(type: "datetime2", nullable: false)
+                    MoveTime = table.Column<DateTime>(type: "datetime2", nullable: false),
                 },
                 constraints: table =>
                 {

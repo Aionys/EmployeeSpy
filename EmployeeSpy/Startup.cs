@@ -1,8 +1,10 @@
-using EmployeeSpy.Core.Abstractions;
 using EmployeeSpy.Configurations;
+using EmployeeSpy.Core.Abstractions;
 using EmployeeSpy.DataAccessEF;
+using EmployeeSpy.DataAccessEF.Repositories;
 using EmployeeSpy.Extensions;
 using EmployeeSpy.Models;
+using EmployeeSpy.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +12,6 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
-using EmployeeSpy.Services;
-using EmployeeSpy.DataAccessEF.Repositories;
 
 namespace EmployeeSpy
 {
