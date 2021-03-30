@@ -15,12 +15,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\EmployeeSpy.Models\EmployeeSpy.Core.csproj" />
     <ProjectReference Include="..\EmployeeSpy.Services\EmployeeSpy.Services.csproj" />
+    <ProjectReference Include="..\EmployeeSpy\EmployeeSpy.csproj" />
   </ItemGroup>
 
 </Project>
