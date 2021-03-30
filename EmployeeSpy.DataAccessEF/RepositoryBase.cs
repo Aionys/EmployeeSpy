@@ -1,16 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using EmployeeSpy.Models;
-using EmployeeSpy.Abstractions;
+using EmployeeSpy.Core.Abstractions;
 using Microsoft.EntityFrameworkCore;
 
 namespace EmployeeSpy.DataAccessEF
 {
     public class RepositoryBase<TEntity> : IRepository<TEntity> where TEntity : BaseEntity
     {
-        private readonly EmployeeSpyContext _context;
+        protected readonly EmployeeSpyContext _context;
 
         public RepositoryBase(EmployeeSpyContext context)
         {
@@ -21,7 +20,6 @@ namespace EmployeeSpy.DataAccessEF
 
         public TEntity GetById (int Id)
         {
-             throw new Exception("ex middleware test");
             return RepositoryQuery.FirstOrDefault(e => e.Id == Id);
         }
 

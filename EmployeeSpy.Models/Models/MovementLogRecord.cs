@@ -2,7 +2,7 @@
 
 namespace EmployeeSpy.Models
 {
-    public enum MoveDirection { enter = 0, exit = 1 }
+    public enum MoveDirection { Enter = 0, Exit = 1 }
 
     public class MovementLogRecord : BaseEntity
     {

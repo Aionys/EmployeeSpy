@@ -41,16 +41,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstractions\IRoomsRepository.cs" />
+    <Compile Include="Abstractions\IGateKeeperService.cs" />
     <Compile Include="Abstractions\IRepository.cs" />
-    <Compile Include="Room.cs" />
-    <Compile Include="BaseEntity.cs" />
-    <Compile Include="GateKeeper.cs" />
-    <Compile Include="Door.cs" />
-    <Compile Include="MovementLogRecord.cs" />
-    <Compile Include="Visitor.cs" />
+    <Compile Include="Models\Room.cs" />
+    <Compile Include="Models\BaseEntity.cs" />
+    <Compile Include="Models\GateKeeper.cs" />
+    <Compile Include="Models\Door.cs" />
+    <Compile Include="Models\MovementLogRecord.cs" />
+    <Compile Include="Models\Visitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Employee.cs" />
-    <Compile Include="Person.cs" />
+    <Compile Include="Models\Employee.cs" />
+    <Compile Include="Models\Person.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

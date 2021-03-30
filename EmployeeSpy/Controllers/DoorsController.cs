@@ -1,4 +1,4 @@
-﻿using EmployeeSpy.Abstractions;
+﻿using EmployeeSpy.Core.Abstractions;
 using EmployeeSpy.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
